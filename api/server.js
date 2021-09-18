@@ -8,8 +8,9 @@ server.use(express.json());
 server.use('/api/cars', carsRoutes);
 
 server.use('*', (req, res) => {
+
     res.status(404).json({
-        message: 'not found'
+        message: 'somethin aint workin'
     })
 })
 
