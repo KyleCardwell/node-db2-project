@@ -29,26 +29,26 @@ const checkCarPayload = (req, res, next) => {
 
   if (!vin) {
     missing.message = `vin is missing`
-    res.json(missing)
+    res.status(400).json(missing)
   } else if (!make) {
     missing.message = `make is missing`
-    res.json(missing)
+    res.status(400).json(missing)
   } else if (!model) {
     missing.message = `model is missing`
-    res.json(missing)
+    res.status(400).json(missing)
   } else if (!mileage) {
     missing.message = `mileage is missing`
-    res.json(missing)
+    res.status(400).json(missing)
   } else {
     next()
   }
 }
 
 const checkVinNumberValid = (req, res, next) => {
-  const isVinValid = vinValidator.validate(req.vin)
+  const isVinValid = vinValidator.validate(req.body.vin)
   console.log(isVinValid)
   if (!isVinValid) {
-    res.status(400).json({ message: `vin ${req.vin} is invalid` })
+    res.status(400).json({ message: `vin ${req.body.vin} is invalid` })
   } else {
     next()
   }
