@@ -46,7 +46,6 @@ const checkCarPayload = (req, res, next) => {
 
 const checkVinNumberValid = (req, res, next) => {
   const isVinValid = vinValidator.validate(req.body.vin)
-  console.log(isVinValid)
   if (!isVinValid) {
     res.status(400).json({ message: `vin ${req.body.vin} is invalid` })
   } else {
